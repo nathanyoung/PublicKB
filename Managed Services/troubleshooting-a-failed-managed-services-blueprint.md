@@ -6,7 +6,9 @@
   "contentIsHTML": true
 }}}
 
-<p>If a Managed Services Blueprint does not complete as expected, please follow these steps to expedite troubleshooting.</p>
+<p>If a Managed Services Blueprint does not complete as expected, please note the OS and the time the Blueprint was attempted. RHEL Managed Services Blueprints will fail from 9am to 10am UTC as a result of regular maintenance in our managed services infrastructure. Please wait one hour before attempting again.</p>
+
+<p>If that is not the issue, follow these steps to expedite troubleshooting.</p>
 <p><strong>1. From within the Control Portal, hover over the green bar at the top of the page.</strong>
 </p>
 <p><img src="https://t3n.zendesk.com/attachments/token/U8DbQ8GQAPbqUUC5iz66CKzfe/?name=Menu.png" alt="Menu.png" />
@@ -70,4 +72,4 @@
 </ul>
 <p><strong>NEED ADDITIONAL ASSISTANCE?</strong>
 </p>
-<p>Refer to this related KB, "<a href="https://t3n.zendesk.com/entries/46770424-Deploying-Managed-Services-within-Sub-Accounts" target="_blank">Deploying Managed Services with Sub-accounts</a>."</p>
+<p>Refer to this related KB, "<a href="https://t3n.zendesk.com/entries/46770424-Deploying-Managed-Services-within-Sub-Accounts">Deploying Managed Services with Sub-accounts</a>."</p>

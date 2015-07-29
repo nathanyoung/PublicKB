@@ -8,7 +8,7 @@
 
 **Note**: this feature only supports OVFs exported from VMware environments, and certain operating systems. Virtual appliances and OVFs from other hypervisors should be imported as a service task.
 
-1. Ensure your OVF meets requirements for import – [they are listed here](../srvers/self-service-vm-import-ovf-requirements.md).
+1. Ensure your OVF meets requirements for import – [they are listed here](../Servers/self-service-vm-import-ovf-requirements.md).
 
 2. Connect to your CenturyLink Cloud FTP server; [instructions detailed here](../Control Portal/ftp-users-in-control-portal.md).
   * **Note**: You can import VMs to any available data center in your account; the OVF file is simply stored in your home data center FTP account for initial processing.
@@ -17,6 +17,7 @@
 
 4. Within the “import” folder, create another folder with a name that matches the name of your OVF.  Upload the OVF to this location (i.e. “import/sampleovfname”), using your preferred FTP client. Be sure to use only alphanumeric characters in your filename, special characters may result in errors.
   * **Note**: Your VMDK, VMX's, etc must be uploaded to the same location as well. If you export a VM from VMWare, all you need to do is upload the entire folder using the correct folder structure.
+  * **Note: the VM name cannot include a "." - this will cause import failure.
 
 5. Transfer the OVF from your local machine to the subfolder you just created in your FTP account.
   * The transfer of the OVF may take several hours, depending on the size of the file and the speed of your connection.

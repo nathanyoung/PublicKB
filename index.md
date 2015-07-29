@@ -2,6 +2,7 @@
   "category_order": [
     "Support",
     "Accounts & Users",
+    "AppFog",
     "Autoscale",
     "Blueprints",
     "Service Tasks",
@@ -14,6 +15,7 @@
     "Object Storage",
     "Partners",
     "Release Notes",
-    "Servers"
-  ] 
+    "Servers",
+    "WordPress"
+  ]
 }}}

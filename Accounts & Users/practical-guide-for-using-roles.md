@@ -7,7 +7,7 @@
 }}}
 
 <h3>Description</h3>
-<p>CenturyLink Cloud currently offers eight roles that are available to assign users to. A brief description of each role is available on the <a href="../../accounts-&-users/user-permissions/">User Permissions</a> page, and a complete list of actions that can be performed by each role can be found in the <a href="../../accounts-&-users/role-permissions-matrix/">Role Permissions Matrix</a>. These roles were designed to align with job functions that are frequently found in many organizations, but they may not perfectly match up with the specific use cases or job titles found in your organization. This article will give some examples and guidelines for using roles and account hierarchies for managing security and access in the Control Portal.</p>
+<p>CenturyLink Cloud currently offers eight roles that are available to assign users to. A brief description of each role is available on the <a href="../Accounts & Users/user-permissions.md">User Permissions</a> page, and a complete list of actions that can be performed by each role can be found in the <a href="../Accounts & Users/role-permissions-matrix.md">Role Permissions Matrix</a>. These roles were designed to align with job functions that are frequently found in many organizations, but they may not perfectly match up with the specific use cases or job titles found in your organization. This article will give some examples and guidelines for using roles and account hierarchies for managing security and access in the Control Portal.</p>
 
 <h3>Example Organizational Role Breakdown</h3>
 <p>Not surprisingly, servers and groups typically make up the majority of accessed resources in Control Portal. As such, Server Administrators and Server Operators who manage servers and groups within an account, will likely make up more than half of your users. While Server Operator permissions will probably be enough for most, Server Administrators do have a few extra privileges, allowing them to add public IPs to servers, configure load balancers, change server administrator/root passwords, create and update alert and autoscale policies, and manage Blueprints for orchestrating complex server build-outs.</p>
@@ -16,7 +16,7 @@
 <p>Finally, there will of course be some Account Administrators who have access to perform all functions within the context of the account, and there may also be a few users who have specialized functions like accountants who manage billing (Billing Manager) or domain name managers who may be separate from a networking team (DNS Manager).</p>
 <p>Below is a pie chart detailing one suggested breakdown of roles for an organization that generally follows these principles.</p>
 
-<p><img src="https://t3n.zendesk.com/attachments/token/1CrBboPTscvDSlam9n4ntpls3/?name=roles-breakdown-pie-chart.png" alt="roles-breakdown-pie-chart.png" />
+<p><img src="../images/practical-guide-roles-roles-breakdown-pie-chart.png" alt="roles-breakdown-pie-chart.png" />
 </p>
 
 <h3>Example Use Case</h3>
@@ -60,24 +60,24 @@
 <p>All of these things than can be controlled by setting up an account hierarchy appropriately. In this case, James and Michelle will use the QIND account as the parent account for all areas of the company, and will create sub accounts for each individual
   business unit. This way, users who are created in each sub account will only have access to the resources that exist there, but users in the parent account will have access in that context and be able to view/interact with all resources in the sub accounts
   as well. So the account hierarchy will look like this:</p>
-<p><img src="https://t3n.zendesk.com/attachments/token/KIqYmBhOLpIx7Yyx8k1QvqiNP/?name=Q-acct-hierarchy.png" alt="Q-acct-hierarchy.png" />
+<p><img src="../images/practical-guide-roles-Q-acct-hierarchy.png" alt="Q-acct-hierarchy.png" />
 </p>
 <p>The steps below will walk through setting up one of these accounts to meet the requirements described above.</p>
 <ol>
   <li>From the Account page on the Sub Accounts tab, click the "create new account" button.
-    <br /><img src="https://t3n.zendesk.com/attachments/token/mFxWpYk2aHf7BFc3VPOWkrDwY/?name=create-new-account.png" alt="create-new-account.png" />
+    <br /><img src="../images/practical-guide-roles-create-new-account.png" alt="create-new-account.png" />
   </li>
   <li>Enter the desired account name and alias (along with all the required address information and default DNS information if desired).
-    <br /><img src="https://t3n.zendesk.com/attachments/token/teKarCbtNEt8Gh5a8xFH0tl9q/?name=company-info.png" alt="company-info.png" />
+    <br /><img src="../images/practical-guide-roles-company-info.png" alt="company-info.png" />
     <br />
     <br />
   </li>
   <li>In this example, we specified that we want to bill the parent account and make the parent networks accessible, so we will set these options here as well, but they should be set per your specific use case:
-    <br /><img src="https://t3n.zendesk.com/attachments/token/NMmlGm1qJIljg54MdyzG9VoSs/?name=billing-info.png" alt="billing-info.png" />
+    <br /><img src="../images/practical-guide-roles-billing-info.png" alt="billing-info.png" />
   </li>
   <li>Finally, we specified above that we want to prevent sub account users from changing custom fields, e-mail templates, and branding information. The Settings area is where we determine this, so we will leave all account settings as disabled so the settings
     will not even show up for these sub account users. (These can also be enabled/disabled after the fact in the Sub Accounts settings tab.)
-    <br /><img src="https://t3n.zendesk.com/attachments/token/mg7VOtfuBfaVtYbZi2X3yvnwe/?name=account-settings.png" alt="account-settings.png" />
+    <br /><img src="../images/practical-guide-roles-account-settings.png" alt="account-settings.png" />
     <br />We could have decided to leave Data Center set to YES so that sub accounts can choose which DCs to allow servers to be deployed to, but here we've left it off as well. We can also change the primary DC if desired.</li>
   <li>Clicking the final "create" button will create the sub account with the settings specified. Users who should only have access to that account's resources should be created within the sub account itself, as described below.</li>
 </ol>
@@ -237,7 +237,7 @@
 <p>The following few examples run through how the above users might interact with each other and the business to perform the necessary operations in Control. (Note: These examples do not detail all the specifics of the process, leaving out some best practices like change control and testing. However, they are designed to give a high-level overview of how the above roles might be applied in a real world scenario.)</p>
 
 <h4>Provisioning Servers</h4>
-<p>The Human Resources team will be deploying a new timekeeping application for Chicago users. They need five application servers behind a load balancer in the IL1 data center. George, a Server Administrator for the HR department, receives a request for these servers and proceeds to create the five that are needed. He also configures a load balancer on the front end to point each of the five servers. (He may even decide to consult with the application architect and opt for using a <a href="../../autoscale/creating-and-applying-autoscale-policies/">Horizontal Autoscale policy</a> instead of keeping all five servers powered on all the time.) Now George enters a request to the DNS Manager, Dorothy, to create a domain to associate with the frontside IP address of the load balancer. Finally, George hands off the servers to Lindsay, the Server Operator designated to this particular HR user group, who will work with the developers of the application to get it deployed on the new servers. A few weeks later, Stuart and Randy, two other Server Operators responsible for Q Industries HR servers, receive word that there is a patch that needs to be applied to the software. They schedule a maintenance window for Friday night and stay late to patch the servers.</p>
+<p>The Human Resources team will be deploying a new timekeeping application for Chicago users. They need five application servers behind a load balancer in the IL1 data center. George, a Server Administrator for the HR department, receives a request for these servers and proceeds to create the five that are needed. He also configures a load balancer on the front end to point each of the five servers. (He may even decide to consult with the application architect and opt for using a <a href="../Autoscale/creating-and-applying-autoscale-policies.md">Horizontal Autoscale policy</a> instead of keeping all five servers powered on all the time.) Now George enters a request to the DNS Manager, Dorothy, to create a domain to associate with the frontside IP address of the load balancer. Finally, George hands off the servers to Lindsay, the Server Operator designated to this particular HR user group, who will work with the developers of the application to get it deployed on the new servers. A few weeks later, Stuart and Randy, two other Server Operators responsible for Q Industries HR servers, receive word that there is a patch that needs to be applied to the software. They schedule a maintenance window for Friday night and stay late to patch the servers.</p>
 <p>Over in Customer Relations, a group in the DC office have been working on a new reporting tool they would like to launch in the VA1 data center. They enter a request for one application server and one database server. Nathan, CR's resident Server Administrator, receives the request and creates both servers. He also works with Phillip, the Network Manager for CR, to configure a domain name for the application, as well as other CR-specific network settings that Phillip is aware of. Soon after the application is released, two of the Server Operators for CR, Lauren and Jerry, notice from some alerts that there seems to be a memory leak. After conferring with the application owner, they decide to create a scheduled task to reboot the application server once a week on Thursday evenings.</p>
 <h4>Network Configuration</h4>
 <p>James and Michelle have already worked with Arthur to set up a Site-to-Site VPN to connect the company's Chicago intranet to the primary network in IL1 in the QIND account, enabling users on the intranet to connect directly to this network without the need for an OpenVPN connection. </p>
